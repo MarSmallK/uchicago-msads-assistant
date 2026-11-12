@@ -60,7 +60,7 @@ CSS = """
 <style>
 @property --a {syntax:'<angle>'; inherits:false; initial-value:0deg;}
 @keyframes spin {to {--a:360deg;}}
-@keyframes float {0%,100% {transform:translateY(0);} 50% {transform:translateY(-8px);}}
+@keyframes float {0%,100% {translate:0 0;} 50% {translate:0 -6px;}}
 @keyframes drift {0% {transform:translate(0,0) scale(1);} 50% {transform:translate(4%,-3%) scale(1.15);} 100% {transform:translate(0,0) scale(1);}}
 @keyframes pulse {0%,100% {transform:scale(1); opacity:.85;} 50% {transform:scale(1.18); opacity:1;}}
 @keyframes rise {from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:none;}}
@@ -73,24 +73,24 @@ html, body, [data-testid="stApp"] {background:#110a0c !important; color:#ece3e1;
 [data-testid="stApp"]::after {width:55vw; height:55vw; right:-18vw; bottom:-28vw; background:#7a2c38; opacity:.28; animation:drift 26s ease-in-out infinite reverse;}
 [data-testid="stHeader"], [data-testid="stToolbar"], #MainMenu, footer {display:none !important;}
 [data-testid="stBottom"], [data-testid="stBottom"] > div {background:transparent !important;}
-.block-container {max-width:720px; padding-top:1.4rem !important; position:relative; z-index:1;}
+.block-container {max-width:720px; padding-top:1rem !important; padding-bottom:7rem !important; position:relative; z-index:1;}
 
 .bar {display:flex; align-items:center; justify-content:center; animation:rise .6s both;}
-.bar img {height:34px; opacity:.92;}
+.bar img {height:28px; opacity:.92;}
 .bar .tag {font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:#d9b5b8;}
 
-.hero {text-align:center; padding:.6rem 0 1rem; animation:rise .8s both;}
-.stage {position:relative; width:250px; height:250px; margin:0 auto;}
+.hero {text-align:center; padding:.2rem 0 .6rem; animation:rise .8s both;}
+.stage {position:relative; width:min(170px,22vh); height:min(170px,22vh); margin:0 auto;}
 .stage .orb {position:absolute; inset:14px; border-radius:50%;
   background:conic-gradient(from var(--a), #b4475a, #7a1f2b, #c58b72, #8e2a3a, #b4475a);
   filter:blur(30px); opacity:.7; animation:spin 12s linear infinite, pulse 6s ease-in-out infinite;}
-.stage .ring {position:absolute; inset:30px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
+.stage .ring {position:absolute; inset:20px; border-radius:50%; border:1px solid rgba(255,255,255,.18);
   background:radial-gradient(circle at 35% 28%, rgba(255,255,255,.28), rgba(255,255,255,.04) 60%); backdrop-filter:blur(6px);}
-.stage svg {position:absolute; left:50%; top:50%; width:160px; height:160px; margin:-84px 0 0 -80px; animation:float 5s ease-in-out infinite; filter:drop-shadow(0 10px 18px rgba(0,0,0,.45));}
-.hero h1 {font-family:'Iowan Old Style','Palatino Linotype',Georgia,serif; font-weight:600; font-size:2.35rem; line-height:1.1; margin:.4rem 0 .1rem; letter-spacing:-.01em;
+.stage svg {position:absolute; left:50%; top:50%; width:66%; height:66%; transform:translate(-50%,-52%); margin:0; animation:float 5s ease-in-out infinite; filter:drop-shadow(0 10px 18px rgba(0,0,0,.45));}
+.hero h1 {font-family:'Iowan Old Style','Palatino Linotype',Georgia,serif; font-weight:600; font-size:clamp(1.6rem,4.2vh,2.1rem); line-height:1.1; margin:.2rem 0 .1rem; letter-spacing:-.01em;
   background:linear-gradient(90deg,#f6eeec,#e9cfd2); -webkit-background-clip:text; background-clip:text; color:transparent;}
 .hero .sub {font-size:.82rem; letter-spacing:.2em; text-transform:uppercase; color:#bda7a9;}
-.hero .hi {margin-top:1rem; font-size:1rem; color:#e3d6d4;}
+.hero .hi {margin-top:.55rem; font-size:.98rem; color:#e3d6d4;}
 
 div[data-testid="stButton"] button {border:1px solid rgba(255,255,255,.12); border-radius:999px; background:rgba(255,255,255,.05);
   color:#ece3e1; justify-content:center; backdrop-filter:blur(10px); transition:all .2s; min-height:2.6rem; width:100%;}
@@ -127,6 +127,7 @@ div[data-testid="stButton"] button:hover {border-color:#b4475a; background:rgba(
 [data-testid="stElementContainer"]:has(.umark) {display:none;}
 [data-testid="stChatMessage"]:has(.umark) [data-testid="stMarkdownContainer"] {text-align:right;}
 [data-testid="stChatMessage"]:has(.umark) [data-testid="stMarkdownContainer"] .meta {text-align:right;}
+.hero h1 a, [data-testid="stHeaderActionElements"], .hero [data-testid="StyledLinkIconContainer"] a {display:none !important;}
 .note {text-align:center; color:#9a8689; font-size:.75rem; margin-top:.3rem;}
 @media (prefers-reduced-motion: reduce) {* {animation:none !important;}}
 </style>
